@@ -1,0 +1,47 @@
+QUESTION
+1005. Maximize Sum Of Array After K Negations
+Easy
+
+1069
+
+84
+
+Add to List
+
+Share
+Given an integer array nums and an integer k, modify the array in the following way:
+
+choose an index i and replace nums[i] with -nums[i].
+You should apply this process exactly k times. You may choose the same index i multiple times.
+
+Return the largest possible sum of the array after modifying it in this way.
+CODE
+class Solution {
+public:
+    int largestSumAfterKNegations(vector<int>& nums, int k) {
+        int sum=0,minm=INT_MAX;
+        int j=0;
+        while(j<k){
+            minm=INT_MAX;
+        for(int i=0;i<nums.size();i++)
+        {
+                minm=min(minm,nums[i]);
+        }
+            for(int i=0;i<nums.size();i++)
+            {
+                if(nums[i]==minm)
+                {
+                    cout<<nums[i]<<" ";
+                    nums[i]=-nums[i];
+                    break;
+                }
+            }
+            j++;
+    }
+        for(int i=0;i<nums.size();i++)
+        {
+            sum+=nums[i];
+        }
+        return sum;
+    }
+};
